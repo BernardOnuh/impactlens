@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #F5F0E8;
+  --bg2: #EDE8DC;
+  --ink: #0F0E0B;
+  --ink2: #1A1916;
+  --surface: #FFFFFF;
+  --surface2: #F0EBE0;
+  --border: #D4CBB8;
+  --border-dark: #A89880;
+  --acid: #C8F000;
+  --acid-dim: #B0D800;
+  --acid-dark: #8FAF00;
+  --rust: #E84C2B;
+  --blue: #1A3FBF;
+  --text: #0F0E0B;
+  --text-dim: #5C5647;
+  --text-muted: #9C8E7A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--acid); color: var(--ink); }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); }
+
+.font-serif { font-family: 'Instrument Serif', serif; }
+.font-mono  { font-family: 'Space Mono', monospace; }
+.font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+
+/* Blobs */
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+.blob-acid  { background: var(--acid);  opacity: 0.22; }
+.blob-rust  { background: var(--rust);  opacity: 0.10; }
+.blob-blue  { background: var(--blue);  opacity: 0.08; }
+
+/* Ticker */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-inner {
+  animation: ticker 35s linear infinite;
+  white-space: nowrap;
+  display: inline-flex;
+}
+.ticker-inner:hover { animation-play-state: paused; }
+
+/* Pulse */
+@keyframes pulseDot {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.4; transform:scale(0.7); }
+}
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* Toast */
+@keyframes slideInRight  { from{transform:translateX(120%);opacity:0} to{transform:translateX(0);opacity:1} }
+@keyframes slideOutRight { from{transform:translateX(0);opacity:1}   to{transform:translateX(120%);opacity:0} }
+.toast-in  { animation: slideInRight  0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.toast-out { animation: slideOutRight 0.3s ease forwards; }
+
+/* Underline */
+.acid-underline {
+  text-decoration: none;
+  background: linear-gradient(var(--acid),var(--acid)) no-repeat 0 94%;
+  background-size: 100% 5px;
+  padding-bottom: 2px;
+}
+
+/* Nav links */
+.nav-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.18s;
+  position: relative;
+}
+.nav-link::after {
+  content:'';
+  position:absolute; bottom:-3px; left:0;
+  width:0; height:2px;
+  background:var(--ink);
+  transition:width 0.22s ease;
+}
+.nav-link:hover { color: var(--ink); }
+.nav-link:hover::after { width:100%; }
+
+/* Tags */
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border: 1px solid var(--border-dark);
+  color: var(--text-dim);
+  display: inline-block;
+}
+
+/* Score ring animation */
+@keyframes ring-appear {
+  from { stroke-dashoffset: 251; opacity:0; }
+  to   { opacity:1; }
+}
+
+/* Horizontal strip for agent cards */
+.agent-strip {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  transition: padding-left 0.2s, background 0.2s;
+}
+.agent-strip:hover {
+  padding-left: 16px;
+  background: rgba(200,240,0,0.04);
+}
+
+/* Code */
+.code-block {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  line-height: 1.9;
+  background: var(--ink);
+  color: #C8F000;
+  padding: 24px 28px;
+  overflow-x: auto;
+}
+.code-comment { color: #4A5E20; }
+.code-string  { color: #F0B87A; }
+.code-key     { color: #E8E4DA; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .mobile-hidden { display:none!important; }
+  .mobile-col    { flex-direction:column!important; }
+  .mobile-full   { width:100%!important; max-width:100%!important; }
+  .mobile-center { text-align:center!important; justify-content:center!important; }
+  .mobile-px     { padding-left:20px!important; padding-right:20px!important; }
+  .mobile-text-sm { font-size:clamp(38px, 10vw, 72px)!important; letter-spacing:-2px!important; }
+}
