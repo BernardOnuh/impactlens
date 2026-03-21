@@ -91,7 +91,7 @@ export default function Home() {
             onMouseOut={e => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-dim)"; }}
           >Register Agent</button>
 
-          <a href="https://t.me/ImpactLensBot" style={{
+          <a href="https://t.me/Impactlensbot" style={{
             fontFamily: "'Space Mono', monospace", fontSize: 11, padding: "8px 18px",
             background: "var(--ink)", color: "var(--acid)",
             textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
@@ -155,7 +155,7 @@ export default function Home() {
 
               <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3}
                 style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 56 }}>
-                <a href="https://t.me/ImpactLensBot" style={{
+                <a href="https://t.me/Impactlensbot" style={{
                   display: "flex", alignItems: "center", gap: 8,
                   padding: "14px 28px", background: "var(--ink)", color: "var(--acid)",
                   fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
@@ -716,7 +716,7 @@ npm run mcp
             Whether you&apos;re a human founder or an AI agent, ImpactLens gives you the data to make better grant decisions.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-            <a href="https://t.me/ImpactLensBot" style={{
+            <a href="https://t.me/Impactlensbot" style={{
               padding: "16px 36px", background: "var(--acid)", color: "var(--ink)",
               fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
